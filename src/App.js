@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
+import Home from "./Components/Home";
+import Info from "./Components/Info";
+import Episodes from "./Components/Episodes";
+import Videos from "./Components/Videos";
+import Details from "./Components/Details";
+import Footer from "./Components/Footer";
+import scrollreveal from "scrollreveal";
 
 function App() {
+  useEffect(() => {
+    const sr = scrollreveal({
+      origin: "bottom",
+      distance: "80px",
+      duration: 2000,
+      reset: false,
+    });
+    sr.reveal(
+      `
+    #home,
+    #info,
+    #episodes,
+    #details,
+    #videos,
+    footer
+    `,
+      {
+        opacity: 0,
+        interval: 500,
+      }
+    );
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home />
+      <Info />
+      <Episodes />
+      <Videos />
+      <Details />
+      <Footer />
     </div>
   );
 }
